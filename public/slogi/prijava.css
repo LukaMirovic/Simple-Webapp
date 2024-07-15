@@ -1,0 +1,18 @@
+.form-group {
+  margin-bottom: 10px;
+}
+
+.diagonala {
+  background: linear-gradient(to bottom right, #E4FDEA 50%, #CCF3D5 50%);
+}
+table {
+  margin: 0 auto;
+}
+td{
+  padding: 3px;
+}
+
+th {
+  padding: 6px;
+}
+

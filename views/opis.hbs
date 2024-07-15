@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="card text-center m-3 mb-4">
+    <div class="card-header">
+      <h4>
+        <i class="fa-solid fa-pencil"></i>Opis ideje, ki jo nova
+        funkcionalnost podpira
+      </h4>
+    </div>
+    <div class="card-body">
+      <!-- ZAČETEK: Opis ideje, ki jo funkcionalnost podpira -->
+      <p>
+        <strong><i class="fa-solid fa-list-check me-1"></i>TO-DO</strong>: Na
+        tem mestu je potrebno dodati
+        <strong>Ideja je prikazati tip kulturne dediščine v radiju 20 km od mesta, ki ga izberemo.
+            Uporabnik lahko vnese tudi zemljepisno dolžino in širino določene lokacije.
+            Glavni scenarij, v katerem bi se to uporabilo, je za uporabnika, ki načrtuje potovanje.
+            S tem orodjem lahko uporabnik hitro vidi, koliko kulturnih znamenitosti je v bližini in kakšne vrste so, ter bolje načrtuje svoje potovanje.
+            Ciljna publika so predvsem ljudje, ki radi obiskujejo zgodovinske znamenitosti in seveda turisti, ki bi radi izvedeli vrsto kulturne dediščine določenega območja Slovenije.
+            To orodje lahko uporabljajo tako gostje kot uporabniki, a ker je hitro in uporabno, bi bilo bolj namenjeno gostom, ki lahko samo odprejo spletno stran in brez prijave uporabljajo orodje.
+            Krožni diagram je vizualna predstavitev podatkov, ki uporabniku pomaga bolje razumeti kulturno dediščino na izbrani lokaciji.
+            Omogoča uporabnikom, da vidijo delež posamezne vrste dediščine ter pridobijo vpogled v kulturno raznolikost območja.</strong>
+
+        (kakšen je osnovni SCENARIJ UPORABE, KDO je ciljna publika (gost ali
+        prijavljen uporabnik), za kakšen NAMEN se funkcionalnost uporablja).
+      </p>
+      <p class="text-muted mb-0">Opis naj ne bo daljši od 200 besed.</p>
+      <!-- KONEC: Opis ideje, ki jo aplikacija podpira -->
+    </div>
+  </div>
+
+  <div class="card text-center m-3 mb-4">
+    <div class="card-header">
+      <h4>
+        <i class="fa-solid fa-pencil"></i>Uporabljeni zunanji viri podatkov
+      </h4>
+    </div>
+    <div class="card-body">
+      <!-- ZAČETEK: Uporabljeni zunanji viri podatkov -->
+      <p class="mb-0">
+        <strong><i class="fa-solid fa-list-check me-1"></i>
+            URL za API klic je https://teaching.lavbic.net/api/kulturneDediscine/iskanje/lokacija, pri čemer kot poizvedbene parametre podajamo geografsko širino (lat), geografsko dolžino (lng) ter razdaljo (razdalja), s čimer določamo lokacijo in iskalni radij.
+            Namen uporabe tega API-ja je pridobivanje podatkov o kulturni dediščini glede na izbrano lokacijo uporabnika ter prikaz teh podatkov v obliki krožnega diagrama (pie chart).
+            Pridobljeni podatki vključujejo informacije o vrsti kulturne dediščine (npr. sakralna stavbna dediščina, memorialna dediščina, profana stavbna dediščina).
+            Pri implementaciji sem uporabil neposredni API klic za pridobivanje podatkov o kulturni dediščini.
+            To pomeni, da moja aplikacija vzpostavi povezavo s spletnim strežnikom na naslovu https://teaching.lavbic.net/api/kulturneDediscine/iskanje/lokacija in preko HTTP zahtevka pošlje parametre (geografska širina, geografska dolžina, razdalja) za iskanje dediščine v določenem radiju.</strong>:
+
+          Na tem mestu je potrebno navesti zunanji vir podatkov (URL naslov), na
+        kakšen način ste ga uporabili (neposredni API klic, uvožena statična
+        datoteka ipd.) in kaj je bil namen uporabe (kako se vključuje v osnovno
+        idejo aplikacije).
+      </p>
+      <!-- KONEC: Uporabljeni zunanji viri podatkov -->
+    </div>
+  </div>
+
+  <div class="card text-center m-3 mb-4">
+    <div class="card-header">
+      <h4>
+        <i class="fa-solid fa-pencil"></i>Master/detail načrtovalski vzorec
+      </h4>
+    </div>
+    <div class="card-body">
+      <!-- ZAČETEK: Master/detail načrtovalski vzorec -->
+      <p class="mb-0">
+        <strong><i class="fa-solid fa-list-check me-1"></i>TO-DO</strong>: Na
+        tem mestu morate navesti uporabljen master/detail načrtovalski vzorec in
+        na kakšen način ga nameravate uporabiti.
+      </p>
+      <!-- KONEC: Master/detail načrtovalski vzorec -->
+    </div>
+  </div>
+
+  <div class="card text-center m-3">
+    <div class="card-header">
+      <h4>
+        <i class="fa-solid fa-pencil"></i>Uporabljena tehnika za
+        vizualizacijo podatkov
+      </h4>
+    </div>
+    <div class="card-body">
+      <!-- ZAČETEK: Uporabljeni zunanji viri podatkov -->
+      <p class="mb-0">
+        <strong><i class="fa-solid fa-list-check me-1"></i>TO-DO</strong>: Na
+        tem mestu je potrebno navesti uporabljeno tehniko vizualizacije
+        podatkov, kjer obvezno uporabite knjižnico
+        <a href="https://canvasjs.com/" target="_blank"><i
+            class="fa-solid fa-earth-europe"
+          ></i>canvasJS</a>).
+      </p>
+      <!-- KONEC: Uporabljeni zunanji viri podatkov -->
+    </div>
+  </div>
+</div>

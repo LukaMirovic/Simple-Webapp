@@ -1,0 +1,297 @@
+<head>
+
+
+
+<!-- Ikone Font Awsome -->
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+</head>
+<div class="container text-center pb-0">
+    <div class="row">
+        <div class="col-md-6">
+            <h3><i class="fa-solid fa-filter-circle-dollar"></i>Pregled dopustov</h3>
+            <div class="row">
+                <div class="col">
+                    <div class="rob">
+                        <div class="senca">
+                        </div>
+
+                    <input type="text" id="iskalniNiz" class="form-control d-inline-block"
+                           placeholder="iskalni niz"/>
+                    </div>
+                    <div>
+                        <div style="margin-bottom: 14px";>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <form
+                        action="/izpisiRacunBaza"
+                        method="post"
+                        enctype="multipart/form-data"
+                >
+                    <div class="form-group">
+                        <div class="rob">
+                            <div class="senca">
+                        <select
+                                size="10"
+                                id="seznamRacunov"
+                                name="seznamRacunov"
+                                class="form-control form-control-sm odmik"
+                        >
+                            {{#each seznamRacunov as |racun|}}
+                                <option
+                                        value="{{racun.InvoiceId}}"
+                                        customerId="{{racun.CustomerId}}"
+                                        selected
+                                >
+                                    {{racun.Naziv}}
+                                </option>
+                            {{/each}}
+                        </select>
+                    </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input
+                                type="submit"
+                                class="btn btn-secondary btn-sm"
+                                value="Podrobnosti izleta"
+                        />
+
+                    </div>
+                </form>
+                <div class="help-block"><small id="skupnaCenaIzleta"></small></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h3><i class="fa-regular fa-hand-point-right"></i>Izbira uporabnika</h3>
+            <div class="rob">
+                <div class="senca">
+            <div>
+                <select
+                        size="13"
+                        id="seznamStrank"
+                        name="seznamStrank"
+                        class="form-control form-control-sm odmik"
+                >
+                    {{#each seznamStrank as |stranka|}}
+                        <option value="{{stranka.CustomerId}}">
+                            {{{stranka.Country}}}
+                            |
+                            {{stranka.FirstName}}
+                            {{stranka.LastName}},
+                            {{stranka.Email}}
+                            {{#if stranka.Company}}
+                                ({{stranka.Company}})
+                            {{/if}}
+                        </option>
+                    {{/each}}
+                </select>
+            </div>
+                </div>
+            </div>
+            <br/>
+        </div>
+
+        <div class="col-md-6">
+            <h3><i class="fa-solid fa-table"></i>Statistika v tabeli</h3>
+            <span>V tabeli je navedena osnovna statistika o destinacijah ter njihovih lastnosti.</span>
+
+            <table>
+                <tr style="background-color: #E4FDEA;">
+                    <td rowspan="6" style="color: darkgrey; font-style: italic; text-align: center;">Lastnosti</td>
+                    <td></td>
+                    <td colspan="3" style="color: darkgrey; font-style: italic; text-align: center;">Destinacije</td>
+                </tr>
+                <tr>
+                    <th class="diagonala"></th>
+                    <th style="background-color: #CCF3D5; border-bottom: 3px dashed green;">Turistične atrakcije</th>
+                    <th style="background-color: #CCF3D5; border-bottom: 3px dashed green;">Živalski vrtovi</th>
+                    <th style="background-color: #CCF3D5; border-bottom: 3px dashed green;">Hostli</th>
+                </tr>
+                <tr>
+                    <th style="background-color: #CCF3D5; border-right: 3px dashed green;">Vsi</th>
+                    <th style="border-right: 1px solid darkgrey; border-bottom: 1px solid darkgrey; border-left: 3px dashed green; border-top: 3px dashed green;">{{ atrakcije.vsi }}</th>
+                    <th style="border-right: 1px solid darkgrey; border-bottom: 1px solid darkgrey; border-left: 1px solid darkgrey; border-top: 3px dashed green;">{{ zoo.vsi }}</th>
+                    <th style="border-right: 1px solid darkgrey; border-bottom: 1px solid darkgrey; border-left: 1px solid darkgrey; border-top: 3px dashed green;">{{ hostli.vsi }}</th>
+                </tr>
+                <tr>
+                    <th style="background-color: #CCF3D5; border-right: 3px dashed green;">Izven Ljubljane</th>
+                    <th style="border-right: 1px solid darkgrey; border-bottom: 1px solid darkgrey; border-left: 3px dashed green; border-top: 1px solid darkgrey;">{{ atrakcije.izvenLjubljane }}</th>
+                    <th  style="border-right: 1px solid darkgrey; border-bottom: 1px solid darkgrey; border-left: 1px solid darkgrey; border-top: 1px solid darkgrey;">{{ zoo.izvenLjubljane }}</th>
+                    <th  style="border-right: 1px solid darkgrey; border-bottom: 1px solid darkgrey; border-left: 1px solid darkgrey; border-top: 1px solid darkgrey;">{{ hostli.izvenLjubljane }}</th>
+                </tr>
+                <tr>
+                    <th style="background-color: #CCF3D5; border-right: 3px dashed green;">Spletna stran</th>
+                    <th style="border-right: 1px solid darkgrey; border-bottom: 1px solid darkgrey; border-left: 3px dashed green; border-top: 1px solid darkgrey;">{{ atrakcije.spletnaStran }}</th>
+                    <th  style="border-right: 1px solid darkgrey; border-bottom: 1px solid darkgrey; border-left: 1px solid darkgrey; border-top: 1px solid darkgrey;">{{ zoo.spletnaStran }}</th>
+                    <th  style="border-right: 1px solid darkgrey; border-bottom: 1px solid darkgrey; border-left: 1px solid darkgrey; border-top: 1px solid darkgrey;">{{ hostli.spletnaStran }}</th>
+                </tr>
+                <tr>
+                    <th style="background-color: #CCF3D5; border-right: 3px dashed green;">Wikidata</th>
+                    <th style="border-right: 1px solid darkgrey; border-bottom: 1px solid darkgrey; border-left: 3px dashed green; border-top: 1px solid darkgrey;">{{ atrakcije.wikidata }}</th>
+                    <th style="border-right: 1px solid darkgrey; border-bottom: 1px solid darkgrey; border-left: 1px solid darkgrey; border-top: 1px solid darkgrey;">{{ zoo.wikidata }}</th>
+                    <th  style="border-right: 1px solid darkgrey; border-bottom: 1px solid darkgrey; border-left: 1px solid darkgrey; border-top: 1px solid darkgrey;">{{ hostli.wikidata }}</th>
+                </tr>
+            </table>
+            <div style="margin-top: 40px;">
+                <div class="form-group">
+                    <button type="button" id="prijava" class="btn border-dark btn-light ms-3 opacity-75"
+                            data-bs-toggle="modal" data-bs-target="#modalno-okno-prijava">Prijava z
+                        <i class='fa-brands fa-ethereum'></i> računom
+                    </button>
+                    <button type="button" id="gumb-doniraj-start" class="btn btn-warning float-end me-3" data-bs-toggle="modal"
+                            data-bs-target='#modalno-okno-donacije' disabled><i class="fa-solid fa-hand-holding-dollar"></i>
+                        Doniraj
+                    </button>
+                    <button type="button" class="btn btn-info float-end me-3 mt-1" data-bs-toggle="modal"
+                            data-bs-target="#modalno-okno-seznam-donacij"><i class="fa-solid fa-list-ul"></i> Pregled donacij
+                    </button>
+                    <p id="eth-racun" class="h6 ms-3 opacity-50 mt-1">Račun ni izbran</p>
+                </div>
+            </div>
+
+                </div>
+
+        <div class="col-md-6">
+            <h3><i class="fa-solid fa-chart-pie"></i>Prikaz kulturne dediščine v radiju 20 km</h3>
+            <form>
+                <select id="locationDropdown">
+                    <option value="">Select Location</option>
+                    <option value="ljubljana">Ljubljana</option>
+                    <option value="maribor">Maribor</option>
+                    <option value="celje">Celje</option>
+                </select>
+                <div style="margin-top: 14px;">
+                <label for="latitude">Geografska širina (Latitude):</label>
+                <input type="text" id="latitude" required>
+                <label for="longitude">Geografska dolžina (Longitude):</label>
+                <input type="text" id="longitude" required>
+                <button type="submit" onclick="searchHeritage(event)">Prikaži dediščino</button>
+                </div>
+            </form>
+            <div id="chartContainer" style="height: 400px; width: 100%;"></div>>
+        </div>
+
+    </div>
+</div>
+<div class="modal fade" id="modalno-okno-donacije" data-bs-backdrop="static" tabindex="-1"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Izvedi donacijo iz prijavljenega računa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="col-form-label">Denarnica pošiljatelja:</label>
+                        <span class="text-muted" id="posiljatelj"></span>
+
+                        <label for="denarnica-prejemnika" class="col-form-label">Denarnica prejemnika:</label>
+                        <input type="text" class="form-control" id="denarnica-prejemnika">
+                    </div>
+                    <div class="mb-3">
+                        <label for="donacija" class="col-form-label">Količina Ethereum <i
+                                class='fa-brands fa-ethereum'></i> sredstev:</label>
+                        <input type="number" class="form-control" id="donacija" value="0.1" disabled>
+                    </div>
+                </form>
+                <div id="napakaDonacija"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zapri</button>
+                <button id="potrdi-donacijo" type="button" class="btn btn-primary">Potrdi donacijo</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modalno okno za prijavo računa -->
+<div class="modal fade" id="modalno-okno-prijava" data-bs-backdrop="static" tabindex="-1"
+     aria-labelledby="exampleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel1">Prijava z Ethereum
+                    <i class='fa-brands fa-ethereum'></i> računom</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="denarnica" class="col-form-label">Denarnica:</label>
+                        <input type="text" class="form-control" id="denarnica">
+                    </div>
+                    <div class="mb-3">
+                        <label for="geslo" class="col-form-label">Geslo:</label>
+                        <input type="password" class="form-control" id="geslo">
+                    </div>
+                </form>
+                <div id="napakaPrijava"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zapri</button>
+                <button id="gumb-potrdi-prijavo" type="button" class="btn btn-primary" disabled>Prijava</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modalno okno za pregled donacij -->
+<div class="modal fade" id="modalno-okno-seznam-donacij" data-bs-backdrop="static" tabindex="-1"
+     aria-labelledby="exampleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Seznam donacij</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Zgoščena vrednost transakcije</th>
+                        <th scope="col">Pošiljatelj</th>
+                        <th scope="col">Prejemnik</th>
+                        <th scope="col">Višina donacije</th>
+                    </tr>
+                    </thead>
+                    <tbody id="seznam-donacij">
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>0x0...000</td>
+                        <td>0x0...000</td>
+                        <td>0x0...000</td>
+                        <td>0.1 <i class='fa-brands fa-ethereum'></i></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<link href="slogi/bootstrap.min.css" rel="stylesheet"/>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+
+
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script src="skripte/prijava.js"></script>
+<!-- JavaScript knjižnice in lastna skripta -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.9.0/web3.min.js"></script>
+<script src="skripte/jquery.min.js" type="text/javascript"></script>
+<script src="skripte/bootstrap.bundle.min.js" type="text/javascript"></script>
+
+
+
+
+
